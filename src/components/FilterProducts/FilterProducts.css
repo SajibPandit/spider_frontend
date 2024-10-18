@@ -1,0 +1,61 @@
+Container for filter and product sections .filter_container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Section (Right Side) */
+.filter-section {
+  flex: 0 0 250px; /* Flex-basis sets the base size */
+  max-width: 250px; /* Maximum width of 250px */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ddd; /* Separates it visually */
+}
+
+.filter-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.filter-group h4 {
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.filter-group label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Product Section (Left Side) */
+.product-section {
+  flex-grow: 1; /* Makes this section take up the remaining space */
+  padding: 20px;
+}
+
+.product-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 1rem;
+}

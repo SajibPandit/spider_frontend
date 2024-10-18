@@ -1,0 +1,49 @@
+.category_container {
+  padding: 20px 0;
+}
+
+.category_section_header {
+  display: flex;
+  justify-content: space-between;
+  /* padding: 0 30px; */
+}
+
+.category_items {
+  display: flex;
+  gap: 10px;
+  overflow-x: scroll;
+  padding: 20px 0;
+
+  /* white-space: nowrap; */
+
+  /* For Firefox */
+  /* scrollbar-width: thin; */
+  /* Makes the scrollbar smaller */
+  /* scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1);  */
+  /* thumb, track */
+}
+
+.category_item {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: aqua;
+  flex-shrink: 0;
+}
+
+/* Target the scrollbar itself */
+.category_items::-webkit-scrollbar {
+  width: 6px; /* Vertical scrollbar width */
+  height: 6px; /* Horizontal scrollbar height */
+}
+
+/* The draggable part (thumb) */
+.category_items::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.3); /* Color of the thumb */
+  border-radius: 10px; /* Round the edges */
+}
+
+/* The scrollbar track (background) */
+.category_items::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.1); /* Color of the track */
+}
