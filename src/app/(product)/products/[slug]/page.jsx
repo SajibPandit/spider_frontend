@@ -1,6 +1,6 @@
 // import ImageContainer from "@/components/SingleProduct/ImageContainer";
 import ProductDetails from "@/components/SingleProduct/ProductDetails";
-import { Grid } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { notFound } from "next/navigation";
 
 import dynamic from "next/dynamic";
@@ -38,12 +38,12 @@ export default async function ProductPage({ params }) {
   }
 
   return (
-    <div className="container">
+    <Container>
       <Grid container spacing={2}>
-        <Grid md={6} sm={12} item>
+        <Grid md={6} sm={12} xs={12} item>
           <ImageContainer />
         </Grid>
-        <Grid md={6} sm={12} item>
+        <Grid md={6} sm={12} xs={12} item>
           <ProductDetails />
         </Grid>
       </Grid>
@@ -54,6 +54,6 @@ export default async function ProductPage({ params }) {
       />
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-    </div>
+    </Container>
   );
 }

@@ -25,7 +25,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { registrationValidationSchema } from "@/lib/helpers/validationSchems";
 import { orangeColor } from "@/lib/data/commonData";
 
-export default function page() {
+export default function Page() {
+  const [showPassword, setShowPassword] = useState(false);
   const {
     register,
     handleSubmit,
@@ -37,7 +38,6 @@ export default function page() {
   });
 
   console.log(errors);
-  const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
