@@ -1,6 +1,6 @@
 // import ImageContainer from "@/components/SingleProduct/ImageContainer";
 import ProductDetails from "@/components/SingleProduct/ProductDetails";
-import { Container, Grid } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
 import { notFound } from "next/navigation";
 
 import dynamic from "next/dynamic";
@@ -40,11 +40,14 @@ export default async function ProductPage({ params }) {
   return (
     <Container>
       <Grid container spacing={2}>
+        <Grid md={12} item mt={2}>
+          <Button variant="primary">Go Back</Button>
+        </Grid>
         <Grid md={6} sm={12} xs={12} item>
           <ImageContainer />
         </Grid>
         <Grid md={6} sm={12} xs={12} item>
-          <ProductDetails />
+          <ProductDetails product={product} />
         </Grid>
       </Grid>
       <h1>{product.body.product.title}</h1>

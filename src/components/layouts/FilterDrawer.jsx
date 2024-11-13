@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
@@ -24,11 +24,25 @@ import { ListAlt } from "@mui/icons-material";
 import { orangeColor } from "@/lib/data/commonData";
 
 export default function FilterDrawer({ toggleDrawer }) {
-  const [selectedValue, setSelectedValue] = React.useState("bestMatch");
+  const [selectedValue, setSelectedValue] = useState("bestMatch");
 
-  const [selectedPriceValue, setSelectedPriceValue] = React.useState("");
-  const [minPrice, setMinPrice] = React.useState("");
-  const [maxPrice, setMaxPrice] = React.useState("");
+  const [selectedPriceValue, setSelectedPriceValue] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const getCategories = async () => {
+      let response = await fetch(
+        "https://backend.spiderpie.com/api/v1/categories",
+        {}
+      );
+      let data = await response.json();
+      setCategories(data.body.data);
+    };
+
+    getCategories();
+  }, []);
 
   const handlePriceChange = (event) => {
     setSelectedPriceValue(event.target.value);
@@ -199,9 +213,9 @@ export default function FilterDrawer({ toggleDrawer }) {
                   label="Age"
                   // onChange={handleChange}
                 >
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>All</MenuItem>
+                  <MenuItem value={20}>New</MenuItem>
+                  <MenuItem value={30}>Old</MenuItem>
                 </Select>
               </FormControl>
             </Box>
@@ -222,38 +236,19 @@ export default function FilterDrawer({ toggleDrawer }) {
             </FormGroup>
           </ListItem>
           <FormGroup sx={{ marginLeft: "50px" }}>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={selectedPriceValue === "Price"}
-                  onChange={handleChange}
-                  value="Price"
-                />
-              }
-              label="Category"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={selectedPriceValue === "Price"}
-                  onChange={handleChange}
-                  value="Price"
-                />
-              }
-              label="Category"
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  checked={selectedPriceValue === "Price"}
-                  onChange={handleChange}
-                  value="Price"
-                />
-              }
-              label="Category"
-            />
+            {categories.map((category) => (
+              <FormControlLabel
+                key={category._id}
+                control={
+                  <Checkbox
+                    checked={selectedPriceValue === "Price"}
+                    onChange={handleChange}
+                    value={category._id}
+                  />
+                }
+                label={category.name}
+              />
+            ))}
           </FormGroup>
         </Card>
       </List>
